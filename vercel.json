@@ -1,1 +1,8 @@
-'{"crons":[{"path":"/api/cron/expire-reservations","schedule":"0 0 * * *"}]}' | Out-File -Encoding utf8 -NoNewline vercel.json
+{
+  "crons": [
+    {
+      "path": "/api/cron/expire-reservations",
+      "schedule": "0 0 * * *"
+    }
+  ]
+}
