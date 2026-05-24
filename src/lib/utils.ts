@@ -19,11 +19,10 @@ export function getExpiresAt(): Date {
   return d;
 }
 
-// Derive a stable bigint from a stock ID string for pg_advisory_xact_lock
 export function stockIdToLockKey(stockId: string): bigint {
-  let hash = 0n;
+  let hash = BigInt(0);
   for (let i = 0; i < stockId.length; i++) {
-    hash = (hash * 31n + BigInt(stockId.charCodeAt(i))) & 0x7fffffffffffffffn;
+    hash = (hash * BigInt(31) + BigInt(stockId.charCodeAt(i))) & BigInt("9223372036854775807");
   }
   return hash;
 }
